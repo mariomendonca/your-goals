@@ -3,7 +3,8 @@ export const lightMode = {
   textLight: '#454955',
   background: '#f3eff5',
   primary: '#72b01d',
-  secondary: '#3f7d20'
+  secondary: '#3f7d20',
+  gray: '#c5c3c6'
 }
 
 const darkMode = {
@@ -11,7 +12,8 @@ const darkMode = {
   textLight: '#454955',
   background: '#f3eff5',
   primary: '#72b01d',
-  secondary: '#3f7d20'
+  secondary: '#3f7d20',
+  gray: '#c5c3c6'
 }
 
 export const colors = (theme?: string) => theme === 'light' ? lightMode : darkMode

@@ -1,3 +1,5 @@
+import { useColorScheme } from 'react-native'
+import { ThemeProvider } from 'styled-components/native'
 import { useCallback, useEffect, useMemo } from 'react'
 import * as SplashScreen from 'expo-splash-screen'
 import {
@@ -7,10 +9,8 @@ import {
   useFonts
 } from '@expo-google-fonts/nunito'
 
-import { Home } from './src/Home'
-import { useColorScheme } from 'react-native'
-import { ThemeProvider } from 'styled-components/native'
 import { colors } from './src/global/colors'
+import { Home } from './src/screens/Home'
 
 SplashScreen.preventAutoHideAsync()
 
