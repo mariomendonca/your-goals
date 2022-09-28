@@ -1,10 +1,10 @@
 import { View } from 'react-native'
-import { Button } from '../../components/Button'
 
+import { Button } from '../../components/Button'
 import { Container, Content, Subtitle, Title } from './styles'
 import LoginSVG from '../../assets/login.svg'
 
-export function Home() {
+export function Login() {
   return (
     <Container>
       <Content>
