@@ -1,5 +1,5 @@
-import { Text, View } from "react-native";
-import { fonts } from "./global/fonts";
+import { Text, View } from 'react-native'
+import { fonts } from './global/fonts'
 
 export function Home() {
   return (
