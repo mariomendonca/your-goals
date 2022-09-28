@@ -1,5 +1,5 @@
-import { useCallback, useEffect } from 'react';
-import * as SplashScreen from 'expo-splash-screen';
+import { useCallback, useEffect, useMemo } from 'react'
+import * as SplashScreen from 'expo-splash-screen'
 import {
   Nunito_400Regular,
   Nunito_700Bold,
@@ -7,9 +7,12 @@ import {
   useFonts
 } from '@expo-google-fonts/nunito'
 
-import { Home } from './src/Home';
+import { Home } from './src/Home'
+import { useColorScheme } from 'react-native'
+import { ThemeProvider } from 'styled-components/native'
+import { colors } from './src/global/colors'
 
-SplashScreen.preventAutoHideAsync();
+SplashScreen.preventAutoHideAsync()
 
 export default function App() {
   const [isFontsLoaded] = useFonts({
@@ -28,12 +31,16 @@ export default function App() {
     hideSplash()
   }, [isFontsLoaded])
 
+  const colorScheme = useColorScheme()
+  const theme = useMemo(() => colorScheme === 'light' ? 'light' : 'dark', [colorScheme])
 
   if (!isFontsLoaded) {
     return null
   }
 
   return (
-    <Home />
+    <ThemeProvider theme={colors(theme)}>
+      <Home />
+    </ThemeProvider>
   )
 }
