@@ -10,7 +10,7 @@ import {
 } from '@expo-google-fonts/nunito'
 
 import { colors } from './src/global/colors'
-import { Login } from './src/screens/Login'
+import { Routes } from './src/routes'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -40,7 +40,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={colors(theme)}>
-      <Login />
+      <Routes />
     </ThemeProvider>
   )
 }

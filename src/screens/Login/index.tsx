@@ -3,8 +3,12 @@ import { View } from 'react-native'
 import { Button } from '../../components/Button'
 import { Container, Content, Subtitle, Title } from './styles'
 import LoginSVG from '../../assets/login.svg'
+import { StackScreenProps } from '@react-navigation/stack'
+import { RoutesProps } from '../../routes'
 
-export function Login() {
+type Props = StackScreenProps<RoutesProps, 'Login'>
+
+export function Login({ navigation }: Props) {
   return (
     <Container>
       <Content>
@@ -21,7 +25,10 @@ export function Login() {
 
         <LoginSVG height={250} />
 
-        <Button label='Login' />
+        <Button
+          label='Login'
+          onPress={() => navigation.navigate('Home')}
+        />
       </Content>
     </Container>
   )
