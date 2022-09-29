@@ -11,6 +11,7 @@ import BottomSheet from '@gorhom/bottom-sheet'
 import { Input } from '../../components/Input'
 import { Octicons } from '@expo/vector-icons'
 import { useTheme } from 'styled-components'
+import { loginWithEmailAndPassword } from '../../services/user'
 
 type Props = StackScreenProps<RoutesProps, 'Login'>
 
@@ -18,6 +19,15 @@ export function Login({ navigation }: Props) {
   const colors = useTheme()
   const modalRef = useRef<BottomSheet>(null)
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  async function handleLogin() {
+    await loginWithEmailAndPassword(email, password)
+
+  }
+
 
   return (
     <Container>
@@ -50,9 +60,16 @@ export function Login({ navigation }: Props) {
       >
         <ModalContainer>
           <Title>Your account</Title>
-          <Input placeholder='Email' />
+          <Input
+            placeholder='Email'
+            onChangeText={setEmail}
+            value={email}
+            autoCapitalize='none'
+          />
           <Input
             placeholder='Password'
+            onChangeText={setPassword}
+            value={password}
             mTop='20px'
             secureTextEntry={!isPasswordVisible}
             onIconPress={() => setIsPasswordVisible(!isPasswordVisible)}
@@ -72,6 +89,7 @@ export function Login({ navigation }: Props) {
             mTop='40px'
             mBottom='20px'
             label='Login'
+            onPress={handleLogin}
           />
 
           <TouchableOpacity style={{ alignSelf: 'center' }}>
