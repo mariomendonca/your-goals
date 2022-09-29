@@ -26,3 +26,8 @@ export const Subtitle = styled.Text`
   color: ${({ theme }) => theme.secondary};
   text-align: center;
 `
+
+export const ModalContainer = styled.View`
+  flex: 1;
+  background: wheat;
+`

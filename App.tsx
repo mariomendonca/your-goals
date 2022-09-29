@@ -11,6 +11,7 @@ import {
 
 import { colors } from './src/global/colors'
 import { Routes } from './src/routes'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -40,7 +41,9 @@ export default function App() {
 
   return (
     <ThemeProvider theme={colors(theme)}>
-      <Routes />
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <Routes />
+      </GestureHandlerRootView>
     </ThemeProvider>
   )
 }
