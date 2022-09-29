@@ -25,9 +25,24 @@ export const Subtitle = styled.Text`
   font-family: ${fonts.medium};
   color: ${({ theme }) => theme.secondary};
   text-align: center;
-`
+  `
 
 export const ModalContainer = styled.View`
   flex: 1;
-  background: wheat;
+  background: ${({ theme }) => theme.background};
+  padding: 0 24px;
+  padding-top: 20px;
+`
+
+export const AdviceButton = styled.TouchableOpacity`
+  align-self: flex-end;
+  margin-top: 5px;
+`
+
+export const AdviceText = styled.Text`
+  font-size: 16px;
+  font-family: ${fonts.medium};
+  color: ${({ theme }) => theme.primary};
+  text-decoration: underline;
+  text-decoration-color: ${({ theme }) => theme.primary};
 `

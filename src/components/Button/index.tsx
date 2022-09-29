@@ -7,12 +7,16 @@ export interface ButtonProps extends TouchableOpacityProps {
   label: string
   isLoading?: boolean
   disabled?: boolean
+  mTop?: string
+  mBottom?: string
 }
 
-export function Button({ label, isLoading, disabled, ...rest }: ButtonProps) {
+export function Button({ label, isLoading, disabled, mBottom, mTop, ...rest }: ButtonProps) {
   const colors = useTheme()
   return (
     <Container
+      mTop={mTop}
+      mBottom={mBottom}
       activeOpacity={0.4}
       disabled={isLoading || disabled}
       {...rest}
