@@ -11,20 +11,28 @@ import BottomSheet from '@gorhom/bottom-sheet'
 import { Input } from '../../components/Input'
 import { Octicons } from '@expo/vector-icons'
 import { useTheme } from 'styled-components'
-import { loginWithEmailAndPassword } from '../../services/user'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../../lib/firebase'
+import { AppRoutesProps } from '../../routes/App.routes'
 
-type Props = StackScreenProps<RoutesProps, 'Login'>
+type Props = StackScreenProps<AppRoutesProps, 'Login'>
 
 export function Login({ navigation }: Props) {
   const colors = useTheme()
   const modalRef = useRef<BottomSheet>(null)
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
+  const [isLoading, setIsLoading] = useState(false)
+
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   async function handleLogin() {
-    await loginWithEmailAndPassword(email, password)
+    setIsLoading(true)
+    signInWithEmailAndPassword(auth, email, password)
+      .then(res => console.log(res.user.email))
+      .catch(err => console.log(err))
+      .finally(() => setIsLoading(false))
 
   }
 
@@ -90,6 +98,7 @@ export function Login({ navigation }: Props) {
             mBottom='20px'
             label='Login'
             onPress={handleLogin}
+            isLoading={isLoading}
           />
 
           <TouchableOpacity style={{ alignSelf: 'center' }}>

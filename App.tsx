@@ -2,6 +2,8 @@ import { useColorScheme } from 'react-native'
 import { ThemeProvider } from 'styled-components/native'
 import { useCallback, useEffect, useMemo } from 'react'
 import * as SplashScreen from 'expo-splash-screen'
+import { Provider } from 'react-redux'
+
 import {
   Nunito_400Regular,
   Nunito_700Bold,
@@ -12,6 +14,7 @@ import {
 import { colors } from './src/global/colors'
 import { Routes } from './src/routes'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { store } from './src/lib/store'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -42,7 +45,9 @@ export default function App() {
   return (
     <ThemeProvider theme={colors(theme)}>
       <GestureHandlerRootView style={{ flex: 1 }}>
-        <Routes />
+        <Provider store={store}>
+          <Routes />
+        </Provider>
       </GestureHandlerRootView>
     </ThemeProvider>
   )
